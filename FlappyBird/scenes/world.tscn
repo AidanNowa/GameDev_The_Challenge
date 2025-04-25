@@ -1,36 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://cr7thehd8bwu4"]
+[gd_scene load_steps=6 format=3 uid="uid://cr7thehd8bwu4"]
 
+[ext_resource type="Texture2D" uid="uid://ddexvtuboeiva" path="res://assets/effect_yellow.png" id="1_ged26"]
 [ext_resource type="PackedScene" uid="uid://ctx8bb2cgoi7d" path="res://scenes/player.tscn" id="1_jhujo"]
+[ext_resource type="Texture2D" uid="uid://bhj3wsgacvtxu" path="res://assets/effect_purple.png" id="2_ny6rm"]
 [ext_resource type="PackedScene" uid="uid://yua1dshcid7x" path="res://scenes/obstacle.tscn" id="2_uabyl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1eto"]
-size = Vector2(1179, 160)
+size = Vector2(1179, 122)
 
 [node name="World" type="Node2D"]
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(20, 625)
+[node name="BottomBeam" type="Area2D" parent="."]
+position = Vector2(16, 659)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(558.5, -51)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBeam"]
+position = Vector2(558.5, -32)
 shape = SubResource("RectangleShape2D_a1eto")
 
-[node name="ColorRect" type="ColorRect" parent="Area2D"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -31.0
-offset_top = -132.0
-offset_right = 1147.0
-offset_bottom = 31.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0.156863, 0.372549, 0.231373, 1)
+[node name="Sprite2D" type="Sprite2D" parent="BottomBeam"]
+position = Vector2(-22.6785, -51.6568)
+rotation = 1.5708
+scale = Vector2(5.016, 36.5534)
+texture = ExtResource("1_ged26")
+
+[node name="TopBeam" type="Area2D" parent="."]
+position = Vector2(16, 87)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBeam"]
+visible = false
+position = Vector2(558.5, -32)
+shape = SubResource("RectangleShape2D_a1eto")
+
+[node name="Sprite2D" type="Sprite2D" parent="TopBeam"]
+position = Vector2(-22.6785, -51.6568)
+rotation = 1.5708
+scale = Vector2(5.016, 36.5534)
+texture = ExtResource("2_ny6rm")
 
 [node name="Player" parent="." instance=ExtResource("1_jhujo")]
 position = Vector2(127, 258)
