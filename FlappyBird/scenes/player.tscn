@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctx8bb2cgoi7d"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_2k72r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s2jvr"]
+radius = 10.0499
+
+[sub_resource type="Gradient" id="Gradient_njgwm"]
+offsets = PackedFloat32Array(0.668831, 0.675325, 0.818182)
+colors = PackedColorArray(0.824516, 0.707074, 0.174804, 1, 0, 0, 0, 1, 0.97, 0.97, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_amckl"]
+gradient = SubResource("Gradient_njgwm")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_2k72r")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s2jvr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.333, 0.333)
+texture = SubResource("GradientTexture2D_amckl")
