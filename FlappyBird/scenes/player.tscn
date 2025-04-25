@@ -1,26 +1,32 @@
 [gd_scene load_steps=5 format=3 uid="uid://ctx8bb2cgoi7d"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_2k72r"]
+[ext_resource type="Texture2D" uid="uid://c6nhubxe4ssea" path="res://assets/simpleSpace_tilesheet.png" id="2_xysyl"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_s2jvr"]
-radius = 10.0499
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1x7u"]
+atlas = ExtResource("2_xysyl")
+region = Rect2(192, 128, 64, 64)
 
-[sub_resource type="Gradient" id="Gradient_njgwm"]
-offsets = PackedFloat32Array(0.668831, 0.675325, 0.818182)
-colors = PackedColorArray(0.824516, 0.707074, 0.174804, 1, 0, 0, 0, 1, 0.97, 0.97, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_amckl"]
-gradient = SubResource("Gradient_njgwm")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
+[sub_resource type="SpriteFrames" id="SpriteFrames_ktw6w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1x7u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_2k72r")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_s2jvr")
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+rotation = 1.5708
+polygon = PackedVector2Array(-18, -25, -26, 8, -18, 26, 17, 26, 26, 9, 18, -25)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.333, 0.333)
-texture = SubResource("GradientTexture2D_amckl")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_ktw6w")
